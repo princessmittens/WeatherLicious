@@ -30,7 +30,7 @@
         android:text="@string/weather"
         />
     <TextView
-        android:id="@+id/temp"
+        android:id="@+id/degrees"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -45,7 +45,7 @@
     android:textSize="25sp"
     android:hint="min max" />
     <TextView
-        android:id="@+id/clouds"
+        android:id="@+id/forecast"
         android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -66,15 +66,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
+            android:paddingRight="60sp"
             android:textAlignment="center"
-            android:hint="Humidity: \n 50" />
+            android:hint="Humidity:\n50" />
         <TextView
             android:id="@+id/clouds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textAlignment="center"
-            android:hint="Clouds: \n 50" />
+            android:hint="Clouds:\n50" />
 </LinearLayout>
 </LinearLayout>
 
