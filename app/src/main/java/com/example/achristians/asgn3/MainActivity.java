@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         minAndMax = findViewById(R.id.minandmax);
         forecast = findViewById(R.id.forecast);
         humidity = findViewById(R.id.humidity);
-        clouds = findViewById(R.id.humidity);
+        clouds = findViewById(R.id.clouds);
         weather = findViewById(R.id.weather);
         weatherTxt = findViewById(R.id.weatherTxt);
 
@@ -57,12 +57,10 @@ public class MainActivity extends AppCompatActivity {
                          getWeather();
                     }
             };
-                Log.i("Tag", "mittens");
 
                 Thread thread = new Thread(null, runnable, "background");
                 thread.start();
-
-
+                
                 InputMethodManager inputManager =  (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -76,20 +74,17 @@ public class MainActivity extends AppCompatActivity {
 
             final String url = "http://api.openweathermap.org/data/2.5/weather?q=";
             String urlWithBase = url.concat(city+apiKey);
-    //    Log.i("Tag",   urlWithBase);
             JsonObjectRequest request = new JsonObjectRequest(
                     Request.Method.GET, urlWithBase, null,
                     new Response.Listener<JSONObject>()
                     {
                         public void onResponse(JSONObject response) {
-                            Toast.makeText(getApplicationContext(),"Getting data.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"Getting data.", Toast.
+                                    LENGTH_LONG).show();
+
                             try{
-                                String deg = "cats";
-                                String minT = "minT";
-                                String maxT = "maxT";
-                                String descriptionForecast = "cloudyWithAChanceOfCats";
-                                String humid = "meowhumidity";
-                                String clouds = "clouds";
+                                String deg, minT, maxT, humid, clouds;
+                                String descriptionForecast = "";
 
                                 JSONObject main = response.getJSONObject("main");
                                        deg = main.getString("temp");
@@ -99,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
 
                                 JSONArray weather = response.getJSONArray("weather");
 
-                                for (int i=0; i< weather.length(); i++) {
-                                  JSONObject weatherArray = weather.getJSONObject(i);
-//                                   JSONObject main = weatherArray.getJSONObject("description");
-                                descriptionForecast =  weatherArray.getString("description");
+                                https://stackoverflow.com/questions/8939250/parsing-json-file-java?noredirect=1&lq=1
+                                for (int i=0; i<weather.length(); i++) {
+                                    JSONObject weatherArray = weather.getJSONObject(i);
+                                    descriptionForecast =  weatherArray.getString("description");
                                }
 
                                 JSONObject cloud = response.getJSONObject("clouds");

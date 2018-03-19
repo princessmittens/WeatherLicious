@@ -66,16 +66,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
-            android:paddingRight="60sp"
+            android:paddingRight="30sp"
             android:textAlignment="center"
-            android:hint="Humidity:\n--%" />
+            android:text="Humidity:\n--%" />
         <TextView
             android:id="@+id/clouds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
+            android:paddingLeft="30sp"
             android:textAlignment="center"
-            android:hint="Clouds:\n--%" />
+            android:text="Clouds:\n--%" />
 </LinearLayout>
 </LinearLayout>
 
