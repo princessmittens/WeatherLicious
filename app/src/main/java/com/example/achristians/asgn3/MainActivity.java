@@ -155,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
                                 "server, you probably misspelled the city name." +
                                 "Try again.",
                         Toast.LENGTH_LONG).show();
+                degrees.setText("--°C");
+                clouds.setText("Clouds:\n--%");
+                minAndMax.setText("Min: --°C Max: --°C");
+                humidity.setText("Humidity:\n--%");
+                forecast.setText("----");
             }
         }
         );
