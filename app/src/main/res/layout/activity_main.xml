@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="52sp"
-        android:hint="10" />
+        android:text="--°C" />
     <TextView
     android:id="@+id/minandmax"
     android:layout_marginTop="10dp"
@@ -43,7 +43,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:textSize="25sp"
-    android:hint="min max" />
+    android:hint="Min: --°C Max: --°C" />
     <TextView
         android:id="@+id/forecast"
         android:layout_marginTop="10dp"
@@ -52,7 +52,7 @@
         android:gravity="center"
         android:textSize="25sp"
         android:textAlignment="center"
-        android:hint="Cloudy\n more clouds" />
+        android:hint="--" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -68,14 +68,14 @@
             android:textSize="25sp"
             android:paddingRight="60sp"
             android:textAlignment="center"
-            android:hint="Humidity:\n50" />
+            android:hint="Humidity:\n--%" />
         <TextView
             android:id="@+id/clouds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textAlignment="center"
-            android:hint="Clouds:\n50" />
+            android:hint="Clouds:\n--%" />
 </LinearLayout>
 </LinearLayout>
 

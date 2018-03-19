@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button weather;
     EditText weatherTxt;
     String city;
-    String apiKey = "&APPID=0533bae34d4a2010f556ce49f3137055";
+    String apiKey = "&units=metric&APPID=0533bae34d4a2010f556ce49f3137055";
     private Runnable runnable;
     double d = 55.3;
     @Override
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 city = weatherTxt.getText().toString().toLowerCase();
+                Log.i("Tag", "test");
                 runnable = new Runnable() {
                     @Override
                 public void run() {
@@ -72,22 +74,44 @@ public class MainActivity extends AppCompatActivity {
 
     private void getWeather() {
 
-            final String url = "http://api.openweathermap.org/data/2.5/forecast?q=";
+            final String url = "http://api.openweathermap.org/data/2.5/weather?q=";
             String urlWithBase = url.concat(city+apiKey);
-
+    //    Log.i("Tag",   urlWithBase);
             JsonObjectRequest request = new JsonObjectRequest(
                     Request.Method.GET, urlWithBase, null,
                     new Response.Listener<JSONObject>()
                     {
                         public void onResponse(JSONObject response) {
-                            Toast.makeText(getApplicationContext(),"getting data", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"Getting data.", Toast.LENGTH_LONG).show();
                             try{
+                                String deg = "cats";
+                                String minT = "minT";
+                                String maxT = "maxT";
+                                String descriptionForecast = "cloudyWithAChanceOfCats";
+                                String humid = "meowhumidity";
+                                String clouds = "clouds";
 
                                 JSONObject main = response.getJSONObject("main");
-                                String temp = main.getString("temp");
+                                       deg = main.getString("temp");
+                                       humid = main.getString("humidity");
+                                       minT = main.getString("temp_min");
+                                       maxT = main.getString("temp_max");
 
-                                setTemp(temp);
+                                JSONArray weather = response.getJSONArray("weather");
 
+                                for (int i=0; i< weather.length(); i++) {
+                                  JSONObject weatherArray = weather.getJSONObject(i);
+//                                   JSONObject main = weatherArray.getJSONObject("description");
+                                descriptionForecast =  weatherArray.getString("description");
+                               }
+
+                                JSONObject cloud = response.getJSONObject("clouds");
+                                clouds = cloud.getString("all");
+
+                                setTemp(deg);
+                                setMinAndMax(minT, maxT);
+                                setHumidityAndClouds(humid, clouds);
+                                setDescription(descriptionForecast);
 
                             } catch(JSONException e){
                                 e.printStackTrace();
@@ -105,7 +129,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         public void setTemp(String temp){
+            degrees.setText(temp + "°C");
+        }
+        public void setMinAndMax (String minT, String maxT) {
+            minAndMax.setText("Min: " + minT + "°C Max: " + maxT + "°C");
+        }
 
-            degrees.setText(temp);
+        public void setHumidityAndClouds(String humid, String cloud) {
+            humidity.setText("Humidity:\n" + humid + "%");
+            clouds.setText("Clouds:\n" + cloud + "%");
+        }
+
+        public void setDescription(String description) {
+            forecast.setText(description);
         }
 }
