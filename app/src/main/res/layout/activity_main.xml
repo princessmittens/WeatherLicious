@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+    <ImageView
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:src="@drawable/start_page" android:scaleType="fitXY" />
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.achristians.asgn3.MainActivity"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:layout_marginTop = "30dp"
     android:layout_marginStart="10dp">
+
 
     <TextView
         android:id="@+id/chooseCity"
@@ -20,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_weight="0.4"
-        android:inputType="textCapCharacters"/>
+        android:inputType="textPersonName"/>
     <Button
         android:id="@+id/weather"
         android:layout_width="wrap_content"
@@ -79,4 +87,4 @@
             android:text="Clouds:\n--%" />
 </LinearLayout>
 </LinearLayout>
-
+</FrameLayout>

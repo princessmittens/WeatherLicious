@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         clouds = findViewById(R.id.clouds);
         weather = findViewById(R.id.weather);
         weatherTxt = findViewById(R.id.weatherTxt);
-
         weather.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 city = weatherTxt.getText().toString().toLowerCase();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Thread thread = new Thread(null, runnable, "background");
                 thread.start();
-                
+
                 InputMethodManager inputManager =  (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject weatherArray = weather.getJSONObject(i);
                                     descriptionForecast =  weatherArray.getString("description");
                                }
-
                                 JSONObject cloud = response.getJSONObject("clouds");
                                 clouds = cloud.getString("all");
 
@@ -124,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         public void setTemp(String temp){
-            degrees.setText(temp + "°C");
+        int y = (int)Math.round(Double.parseDouble(temp));
+            degrees.setText((Integer.toString(y)) + "°C");
         }
         public void setMinAndMax (String minT, String maxT) {
             minAndMax.setText("Min: " + minT + "°C Max: " + maxT + "°C");
