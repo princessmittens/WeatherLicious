@@ -2,6 +2,8 @@
     <!--Ref: https://stackoverflow.com/questions/1400782/android-scale-a-drawable-or-background-image-->
     <!--Image src: https://www.pexels.com/photo/photo-of-mountains-during-sunset-777211/-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.achristians.asgn3.MainActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     <ImageView
@@ -10,8 +12,6 @@
         android:src="@drawable/start_pg"
         android:scaleType="fitXY" />
 <LinearLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.achristians.asgn3.MainActivity"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -48,13 +48,13 @@
         android:textSize="52sp"
         android:text="--°C" />
     <TextView
-    android:id="@+id/minandmax"
-    android:layout_marginTop="10dp"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:textSize="25sp"
-    android:text="Min: --°C Max: --°C" />
+        android:id="@+id/minandmax"
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:text="Min: --°C Max: --°C" />
     <TextView
         android:id="@+id/forecast"
         android:layout_marginTop="10dp"

@@ -1,18 +1,14 @@
 package com.example.achristians.asgn3;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -62,7 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        getWeather();
+                        try {
+                            getWeather();
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Error getting Weather",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 };
 
@@ -150,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Can't connect to the " +
-                                "server, you probably entered the wrong city. " +
+                                "server, you probably misspelled the city name." +
                                 "Try again.",
                         Toast.LENGTH_LONG).show();
             }
