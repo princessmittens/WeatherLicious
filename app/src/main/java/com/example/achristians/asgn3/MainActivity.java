@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Initial declarations for the text views/city name etc.
      */
-    TextView chooseCity, degrees, minAndMax, forecast, humidity, clouds;
+    TextView chooseCity, degrees, minAndMax, forecast, humidity, clouds, displayCity;
     Button weather;
     EditText weatherTxt;
     String city;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
          * Assign ALL of the buttons
          */
         chooseCity = findViewById(R.id.chooseCity);
+        displayCity = findViewById(R.id.viewCity);
         degrees = findViewById(R.id.degrees);
         minAndMax = findViewById(R.id.minandmax);
         forecast = findViewById(R.id.forecast);
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                             /**
                              * Display values on screen
                              */
+                            setDisplayCity(weatherTxt.getText().toString());
                             setTemp(deg);
                             setMinAndMax(minT, maxT);
                             setHumidityAndClouds(humid, clouds);
@@ -155,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                                 "server, you probably misspelled the city name." +
                                 "Try again.",
                         Toast.LENGTH_LONG).show();
+                displayCity.setText("----");
                 degrees.setText("--°C");
                 clouds.setText("Clouds:\n--%");
                 minAndMax.setText("Min: --°C Max: --°C");
@@ -197,6 +200,11 @@ public class MainActivity extends AppCompatActivity {
         clouds.setText("Clouds:\n" + cloud + "%");
     }
 
+    /**
+     * Sets the name of the city to display on the screen
+     * @param name - name of the city
+     */
+    public void setDisplayCity(String name) { displayCity.setText(name); }
     /**
      * Sets the Forecast Description to display on the screen
      *
