@@ -1,5 +1,8 @@
-# WeatherLicious
-A weather application created on Android Studio using WeatherAPI. 
+# WeatherLicious 
 <br>
-<img src="./images/calgary.png" width="50%" height="50%"/>
-<img src="./images/empty.png" width="50%" height="50%"/> 
+A weather application created on Android Studio using WeatherAPI. 
+<br><br>
+<div class="row">
+<img src="./images/calgary.png" width="40%" height="40%"/>
+<img src="./images/empty.png" width="40%" height="40%"/> 
+</div>
